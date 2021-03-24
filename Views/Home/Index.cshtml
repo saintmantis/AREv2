@@ -1,0 +1,141 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+<div>
+	<p style="position: fixed; z-index:99; top: 3%; left: 4%; border: 0;" data-menuanchor="ARE">
+		<a href="#ARE">Are v2.0</a>
+	</p>
+</div>
+
+<div id="fullpage">
+	<div class="section" id="section0" data-anchor="ARE">
+		<h1>
+			ARE V2.0
+		</h1>
+		<div id="menu">
+			<p data-menuanchor="block1"><a href="#block1">About us</a></p>
+			<p data-menuanchor="block2"><a href="#block2">How it works</a></p>
+			<p data-menuanchor="block3"><a href="#block3">Suggestion for you</a></p>
+			<p data-menuanchor="block4"><a href="#block4">Privacy</a></p>
+		</div>
+	</div>
+	<div class="section" id="section1">
+		<div class="slide" id="slide1"><h1>Листай</h1></div>
+		<div class="slide" id="slide2"><h1>Слайд справа</h1></div>
+		<div class="slide" id="slide3"><h1>второй слайд справа</h1></div>
+		<div class="slide" id="slide4"><h1>третий слайд справа</h1></div>
+	</div>
+	<div class="section" id="section2" data-anchor="block1">
+
+		<h1>About us</h1>
+		<div class="text"></div>
+
+	</div>
+	<div class="section" id="section1" data-anchor="block2">
+		<h1>How it works</h1>
+	</div>
+	<div class="section" id="section4" data-anchor="block3">
+		<h1>Suggestions for you</h1>
+		<!--форма для ввода-->
+		<form class="decor" method="post" action="/HomeController1/ThankYouBd">
+			<div class="form-left-decoration"></div>
+			<div class="form-right-decoration"></div>
+			<div class="circle"></div>
+			<div class="form-inner">
+				<h3>Написать нам</h3>
+				<input input name="login" type="text" placeholder="Username">
+				<input name="login1" type="text" placeholder="Email">
+				<textarea name="login2" type="text" placeholder="Сообщение..." rows="3"></textarea>
+				<input type="submit" value="Отправить">
+			</div>
+		</form>
+		<!--форма для ввода-->
+	</div>
+	<div class="section" id="section1" data-anchor="block4">
+		<h1>Privacy</h1>
+	</div>
+	<script type="text/javascript" src="~/css/fullpage.js"></script>
+</div>
+
+<!--Скрипты для кода-->
+<script type="text/javascript">
+	var myFullpage = new fullpage('#fullpage', {
+		verticalCentered: false
+	});
+</script> <!--скрипт для fullpage-->
+<script>
+	class TextScramble {
+		constructor(el) {
+			this.el = el;
+			this.chars = "!<>-_\\/[]{}—=+*^?#________";
+			this.update = this.update.bind(this);
+		}
+		setText(newText) {
+			const oldText = this.el.innerText;
+			const length = Math.max(oldText.length, newText.length);
+			const promise = new Promise((resolve) => (this.resolve = resolve));
+			this.queue = [];
+			for (let i = 0; i < length; i++) {
+				const from = oldText[i] || "";
+				const to = newText[i] || "";
+				const start = Math.floor(Math.random() * 300);
+				const end = start + Math.floor(Math.random() * 10);
+				this.queue.push({ from, to, start, end });
+			}
+			cancelAnimationFrame(this.frameRequest);
+			this.frame = 0;
+			this.update();
+			return promise;
+		}
+		update() {
+			let output = "";
+			let complete = 0;
+			for (let i = 0, n = this.queue.length; i < n; i++) {
+				let { from, to, start, end, char } = this.queue[i];
+				if (this.frame >= end) {
+					complete++;
+					output += to;
+				} else if (this.frame >= start) {
+					if (!char || Math.random() < 0.28) {
+						char = this.randomChar();
+						this.queue[i].char = char;
+					}
+					output += `<span class="dud">${char}</span>`;
+				} else {
+					output += from;
+				}
+			}
+			this.el.innerHTML = output;
+			if (complete === this.queue.length) {
+				this.resolve();
+			} else {
+				this.frameRequest = requestAnimationFrame(this.update);
+				this.frame++;
+			}
+		}
+		randomChar() {
+			return this.chars[Math.floor(Math.random() * this.chars.length)];
+		}
+	}
+
+	const phrases = [
+		"if (complete === this.queue.length) {▓",
+		"[Math.floor(Math.random()▓",
+		"$('html').animate({scrollTop:0},1000);▓",
+		"} else {▓",
+		"output += `<span class=>${char}</span>`;▓"
+	];
+
+	const el = document.querySelector(".text");
+	const fx = new TextScramble(el);
+
+	let counter = 0;
+	const next = () => {
+		fx.setText(phrases[counter]).then(() => {
+			setTimeout(next, 800);
+		});
+		counter = (counter + 1) % phrases.length;
+	};
+
+	next();
+</script> <!--скрипт для красивой самопечатаюзейся надписи-->

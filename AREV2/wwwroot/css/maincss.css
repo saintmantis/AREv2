@@ -1,0 +1,26 @@
+﻿/*для меню*/
+.menu {
+	font-size: 24px;
+	text-align: right;
+	margin-right: 3%;
+	font-family: 'RomanD';
+}
+/*Для логотипа в верхнем левом углу*/
+.ARE {
+	font-size: 24px;
+}
+.title {
+	font-size: 50px;
+	color: #000;
+	padding-left: 10px;
+}
+
+	.title span {
+		display: inline;
+		background-color: rgba(0, 0, 0, 0.2);
+		box-shadow: -10px 0 0 rgba(0, 0, 0, 0.2), 10px 0 0 rgba(0, 0, 0, 0.2);
+		padding: 0 10px 0 0;
+		color: #FFFFFF;
+		line-height: 10px;
+		font-size: 24px;
+	}

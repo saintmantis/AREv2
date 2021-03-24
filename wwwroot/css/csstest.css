@@ -1,0 +1,83 @@
+/*общая информация о странице*/
+h1 {
+			font-size: 5em;
+			font-family: arial,helvetica;
+			color: #fff;
+			margin: 0;
+			padding: 0;
+		}
+		/* Centered texts in each section
+			Центрированные тексты в каждом разделе
+		* --------------------------------------- */
+		.section {
+			text-align: center;
+		}
+		/* Backgrounds will cover all the section
+			Фоны покроют весь раздел
+		* --------------------------------------- */
+		.section {
+			background-size: cover;
+		}
+
+		.slide {
+			background-size: cover;
+		}
+		/* Defining each section background and styles
+			Определение фона и стилей каждого раздела
+		* --------------------------------------- */
+		#section0 {
+			background-image: url(cloud.jpg);
+		}
+		#section0 h1 {
+			top: 50%;
+			transform: translateY(-50%);
+			position: relative;
+		}
+		#section1 {
+			background: #272727;
+			padding: 6% 0 0 0;
+		}
+		#section2 {
+			background-image: url(clouds2.jpg);
+			padding: 6% 0 0 0;
+		}
+		#section3 {
+			background: #272727;
+			padding: 6% 0 0 0;
+		}
+		#section4 {
+			background-image: url(nebo.jpg);
+			padding: 6% 0 0 0;
+		}
+		#section5 {
+			background: #272727;
+			padding: 6% 0 0 0;
+		}
+		
+		#section3 h1 {
+			color: #fff;
+		}
+		/*Adding background for the slides
+			Добавление фона для слайдов
+		* --------------------------------------- */
+		#slide1 {
+			background: #ffd800;
+			padding: 6% 0 0 0;
+		}
+		#slide2 {
+			background-image: url(nebo.jpg);
+			padding: 6% 0 0 0;
+		}
+		#slide3 {
+			background: #ff0000;
+			padding: 6% 0 0 0;
+		}
+		#slide4 {
+			background: #0094ff;
+			padding: 6% 0 0 0;
+		}
+		
+		/* --------------------------------------- */
+		
+
+
